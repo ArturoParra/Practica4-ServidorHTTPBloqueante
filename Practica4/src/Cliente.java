@@ -26,7 +26,7 @@ public class Cliente {
                     System.out.println("Cerrando aplicación...");
                     return;
                 default:
-                    System.out.println("❌ Opción inválida. Por favor, seleccione una opción válida.");
+                    System.out.println("Opción inválida. Por favor, seleccione una opción válida.");
                     break;
             }
             
@@ -157,7 +157,7 @@ public class Cliente {
             out.writeBytes(request);
             out.flush();
             
-            System.out.println("📡 Solicitud enviada, esperando respuesta...");
+            System.out.println("Solicitud enviada, esperando respuesta...");
             
             // Leer cabeceras usando un enfoque híbrido más eficiente
             ByteArrayOutputStream headerBytes = new ByteArrayOutputStream();
@@ -205,7 +205,7 @@ public class Cliente {
                 throw new IOException("Error en la respuesta HTTP: " + headerLines[0]);
             }
             
-            System.out.println("✅ Respuesta: " + headerLines[0]);
+            System.out.println("Respuesta: " + headerLines[0]);
             
             // Procesar las cabeceras
             Map<String, String> headersMap = new HashMap<>();
@@ -224,7 +224,7 @@ public class Cliente {
             long contentLength = -1;
             if (headersMap.containsKey("content-length")) {
                 contentLength = Long.parseLong(headersMap.get("content-length"));
-                System.out.println("📊 Tamaño del archivo: " + formatFileSize(contentLength));
+                System.out.println("Tamaño del archivo: " + formatFileSize(contentLength));
             }
             
             // Leer el cuerpo de la respuesta y guardar el archivo
@@ -235,7 +235,7 @@ public class Cliente {
                 long totalBytesRead = 0;
                 long startTime = System.currentTimeMillis();
                 
-                System.out.println("💾 Descargando a: " + outputPath);
+                System.out.println("Descargando a: " + outputPath);
                 
                 // Leer el contenido del archivo
                 while ((bytesRead = in.read(buffer)) != -1) {
@@ -245,9 +245,9 @@ public class Cliente {
                     // Mostrar progreso si conocemos el tamaño total
                     if (contentLength > 0) {
                         double progress = (double) totalBytesRead / contentLength * 100;
-                        System.out.printf("\r🔄 Progreso: %.1f%% completado", progress);
+                        System.out.printf("\rProgreso: %.1f%% completado", progress);
                     } else {
-                        System.out.printf("\r📈 Bytes descargados: %s", formatFileSize(totalBytesRead));
+                        System.out.printf("\rBytes descargados: %s", formatFileSize(totalBytesRead));
                     }
                     
                     // Si conocemos el tamaño y hemos leído todo, salir
@@ -263,7 +263,7 @@ public class Cliente {
                 
                 if (totalBytesRead > 0) {
                     double speed = totalBytesRead / seconds;
-                    System.out.println("🎉 Descarga completada: " + formatFileSize(totalBytesRead) + 
+                    System.out.println("Descarga completada: " + formatFileSize(totalBytesRead) + 
                                       " en " + String.format("%.1f", seconds) + " segundos" +
                                       " (" + formatFileSize((long)speed) + "/s)");
                 } else {

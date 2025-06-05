@@ -197,11 +197,11 @@ public class ServidorWEB
 			pw.println();
 			pw.flush();
 			
-			pw.print("<html><head><title>POST Request Processed</title></head>");
+			pw.print("<html><head><title>Peticion POST procesada</title></head>");
 			pw.print("<body bgcolor=\"#2cb794\"><center>");
-			pw.print("<h1>POST Request Successfully Processed</h1>");
-			pw.print("<h3>Resource: " + path + "</h3>");
-			pw.print("<h3>Request Body:</h3>");
+			pw.print("<h1>Peticion POST procesada exitosamente</h1>");
+			pw.print("<h3>Recurso: " + path + "</h3>");
+			pw.print("<h3>Cuerpo de la peticion:</h3>");
 			pw.print("<pre>" + requestBody + "</pre>");
 			pw.print("</center></body></html>");
 			pw.flush();
@@ -246,10 +246,10 @@ public class ServidorWEB
 				pw.println();
 				pw.flush();
 				
-				pw.print("<html><head><title>File Created/Updated</title></head>");
+				pw.print("<html><head><title>Archivo Creado/Actualizado</title></head>");
 				pw.print("<body bgcolor=\"#2cb794\"><center>");
-				pw.print("<h1>File Successfully Created/Updated</h1>");
-				pw.print("<h3>Resource: " + path + "</h3>");
+				pw.print("<h1>Archivo Creado/Actualizado exitosamente</h1>");
+				pw.print("<h3>Recurso: " + path + "</h3>");
 				pw.print("</center></body></html>");
 				pw.flush();
 			} catch (IOException e) {
@@ -292,10 +292,10 @@ public class ServidorWEB
 				pw.println();
 				pw.flush();
 				
-				pw.print("<html><head><title>File Deleted</title></head>");
+				pw.print("<html><head><title>Archivo Eliminado</title></head>");
 				pw.print("<body bgcolor=\"#2cb794\"><center>");
-				pw.print("<h1>File Successfully Deleted</h1>");
-				pw.print("<h3>Resource: " + path + "</h3>");
+				pw.print("<h1>Archivo Eliminado Exitosamente</h1>");
+				pw.print("<h3>Recurso: " + path + "</h3>");
 				pw.print("</center></body></html>");
 				pw.flush();
 			} else {
@@ -324,10 +324,10 @@ public class ServidorWEB
 				StringBuilder header = new StringBuilder();
 				header.append("HTTP/1.1 200 OK\r\n");
 				header.append("Server: ServidorWEB/1.1\r\n");
-				header.append("Date: ").append(new Date()).append("\r\n");
+				header.append("Fecha: ").append(new Date()).append("\r\n");
 				header.append("Content-Type: ").append(contentType).append("\r\n");
 				header.append("Content-Length: ").append(file.length()).append("\r\n");
-				header.append("Connection: close\r\n");
+				header.append("Conexion: close\r\n");
 				header.append("\r\n");
 				
 				bos.write(header.toString().getBytes());
@@ -372,9 +372,9 @@ public class ServidorWEB
 		private void sendErrorResponse(int statusCode, String statusMessage) throws IOException {
 			pw.println("HTTP/1.1 " + statusCode + " " + statusMessage);
 			pw.println("Server: ServidorWEB/1.1");
-			pw.println("Date: " + new Date());
+			pw.println("Fecha: " + new Date());
 			pw.println("Content-Type: text/html");
-			pw.println("Connection: close");
+			pw.println("Conexion: close");
 			pw.println();
 			pw.flush();
 			
